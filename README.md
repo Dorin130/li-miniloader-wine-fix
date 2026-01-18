@@ -52,7 +52,7 @@ Executing cabextract -q /home/user/.cache/winetricks/vcrun6/vcredist.exe -d /pat
 # First attempt without the fix - installation will stall
 $ wine ~/Downloads/nikkeminiloader_oG7STxbESBb.wg.intl.exe
 
-# Copy the fixed DLL to the miniloader directory
+# Copy the fix proxy DLL to the miniloader directory
 $ cp ~/Downloads/version.dll /path/to/clean/prefix/drive_c/users/user/AppData/Local/nikkeminiloader
 
 # Second attempt with the fix - installation completes successfully
