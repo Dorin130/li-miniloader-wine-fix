@@ -25,3 +25,36 @@ make
    - Delta Force: `%APPDATA%\Local\DeltaForceMiniloader\`
 
 3. Launch the installer/launcher
+
+### NOTE
+
+Tested and working with wine-10.20. Proton was tested but did not work.
+
+### Example Setup
+
+```bash
+$ wine --version
+wine-10.20
+
+# Create a clean Wine prefix
+$ export WINEPREFIX="/path/to/clean/prefix"
+
+# Add *version to overrides
+$ winecfg
+wine: created the configuration directory '/path/to/clean/prefix'
+
+# Install the only dependency required by the installer
+$ winetricks -q mfc42
+Executing cd /usr/bin
+Executing load_mfc42 
+Executing cabextract -q /home/user/.cache/winetricks/vcrun6/vcredist.exe -d /path/to/clean/prefix/dosdevices/c:/windows/syswow64 -F mfc42*.dll
+
+# First attempt without the fix - installation will stall
+$ wine ~/Downloads/nikkeminiloader_oG7STxbESBb.wg.intl.exe
+
+# Copy the fixed DLL to the miniloader directory
+$ cp ~/Downloads/version.dll /path/to/clean/prefix/drive_c/users/user/AppData/Local/nikkeminiloader
+
+# Second attempt with the fix - installation completes successfully
+$ wine ~/Downloads/nikkeminiloader_oG7STxbESBb.wg.intl.exe
+```
